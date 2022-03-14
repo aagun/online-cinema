@@ -17,7 +17,7 @@ const handleCloseMessage = (setMessage) => {
 
 const handleMessage = (response, setMessage) => {
   if (response.status === 'failed') {
-    setMessage({ response: response.error.message, variant: 'danger' });
+    setMessage({ response: response?.error.message, variant: 'danger' });
     return handleCloseMessage(setMessage);
   }
 };
@@ -41,7 +41,7 @@ const buyFilm = async (data) => {
     body: data,
   };
 
-  const response = await api.post(`/transaction/film/${filmId}`, config);
+  const response = await api.post(`/u/transaction/film/${filmId}`, config);
   return response;
 };
 

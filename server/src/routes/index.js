@@ -25,6 +25,7 @@ router.get('/u/orders', auth, getUserOrderHistory);
 router.get('/u/film/:id', auth, getFilm);
 router.get('/u/banner', auth, getFilmBanner);
 router.get('/u/films', auth, getPurchasedFilm);
+router.post('/u/transaction/film/:id', auth, uploadFile('transferProof'), addTransaction);
 
 // non member
 router.get('/g/film/:id', getFilm);
@@ -36,6 +37,5 @@ router.get('/categories', getCategories);
 router.post('/film', auth, isAdmin, uploadMultipleFile('thumbnail', 'banner'), addFilm);
 router.get('/transactions', auth, isAdmin, getTransactions);
 router.patch('/transaction', auth, isAdmin, updateTransaction);
-router.post('/transaction/film/:id', auth, isAdmin, uploadFile('transferProof'), addTransaction);
 
 module.exports = router;
